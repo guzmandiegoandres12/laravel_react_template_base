@@ -1,9 +1,14 @@
 import React from 'react';
-import Componet_1 from '../Componets/Componet_1'
+import LayoutDashboard from '../Layout/LayoutDashboard';
+
 const  Index = ()=>{
   return (
-    <><Componet_1></Componet_1></>
+    <div>
+      content dash
+    </div>
   )
 }
+
+Index.layout = page => <LayoutDashboard children={page} title="welcome"></LayoutDashboard>;
 
 export default Index;
