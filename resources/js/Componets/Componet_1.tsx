@@ -4,7 +4,7 @@ import { up } from '../Untils/untils';
 const Componet_1 =()=>{
   return (
     <>
-    {up('componente')}</>
+    {up('componente')} mi componente</>
   )
 }
 

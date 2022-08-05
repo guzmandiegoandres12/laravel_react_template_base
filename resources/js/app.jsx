@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { createInertiaApp } from '@inertiajs/inertia-react';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
+import '../css/app.scss';
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
