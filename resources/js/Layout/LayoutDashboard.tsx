@@ -1,7 +1,8 @@
 import React ,{useState}from 'react';
-import Header from '../Componets/Header';
-import Nav from '../Componets/Nav';
-import NkSidebar from '../Componets/NkSidebar';
+import Header from '../Componets/LayoutsComponets/Header';
+import LocationHeadIndicator from '../Componets/LayoutsComponets/LocationHeadIndicator';
+import Nav from '../Componets/LayoutsComponets/Nav';
+import NkSidebar from '../Componets/LayoutsComponets/NkSidebar';
 
 
 /**menu-toggle */
@@ -17,10 +18,13 @@ const LayoutDashboard = ({children}) =>{
       <Nav/>
       <Header openMenu={openMenu}/>
       <NkSidebar/>
-      <div>
-        {children}
+      <div className="content-body">
+        <LocationHeadIndicator/>
+        <div className="container-fluid mt-3">
+          
+          {children}
+        </div>
       </div>
-      
     </div>
   )
 } 
