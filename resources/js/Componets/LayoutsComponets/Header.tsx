@@ -1,12 +1,14 @@
 import React from 'react';
+import {useSelector,useDispatch} from 'react-redux'
+import  {actions as menuManagerActions} from '../../stores/MenuManagerStore';
+const Header = () => {
+  const dispatch = useDispatch()
 
-const Header = ({openMenu}) => {
   return(
     <div className="header">
     <div className="header-content clearfix">
-
       <div className="nav-control">
-        <div className="hamburger" onClick={()=>{openMenu()}}>
+        <div className="hamburger" onClick={()=>{dispatch(menuManagerActions.menuExpandTogle())}}>
           <span className="toggle-icon"><i className="icon-menu"></i></span>
         </div>
       </div>

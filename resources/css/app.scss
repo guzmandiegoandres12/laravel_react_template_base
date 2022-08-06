@@ -8154,7 +8154,10 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   padding-top: 0;
   z-index: 99;
   background: #fff;
-  transition: all .2s ease; }
+  transition: all .2s ease; 
+  overflow-y: auto;
+}
+  
   @media only screen and (min-width: 1200px) and (max-width: 1350px) {
     .nk-sidebar {
       width: 14.375rem; } }

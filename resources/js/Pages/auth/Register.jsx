@@ -1,9 +1,10 @@
+import { Link } from '@inertiajs/inertia-react';
 import React from 'react';
 
 const Register = () => {
   return (
     <div class="row justify-content-center h-100">
-      <div className="col-xl-6">
+      <div className="col-10 col-md-3">
         <div className="form-input-content">
           <div className="card login-form mb-0">
             <div className="card-body pt-5">
@@ -23,7 +24,7 @@ const Register = () => {
                 <button className="btn login-form__btn submit w-100">Sign in</button>
               </form>
               <div>
-                <p className="mt-5 login-form__footer">Have account <a href="page-login.html" className="text-primary">Sign Up </a> now</p>
+                <p className="mt-5 login-form__footer">Have account <Link href="/login" className="text-primary">Sign Up </Link> now</p>
 
               </div>
             </div>

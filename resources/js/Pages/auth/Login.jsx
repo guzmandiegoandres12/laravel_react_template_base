@@ -7,7 +7,7 @@ const Login = () => {
   
   return (
     <div className="row justify-content-center h-100">
-      <div className="col-10 col-md-5">
+      <div className="col-10 col-md-3">
         <div className="form-input-content">
           <div className="card login-form mb-0">
             <div className="card-body pt-5">
@@ -22,7 +22,7 @@ const Login = () => {
                 </div>
                 <Link href="/home" className="btn login-form__btn submit w-100">Sign In</Link>
               </form>
-              <p className="mt-5 login-form__footer">Dont have account? <a href="page-register.html" className="text-primary">Sign Up</a> now</p>
+              <p className="mt-5 login-form__footer">Dont have account? <Link href="/register" className="text-primary">Sign Up</Link> now</p>
             </div>
           </div>
         </div>
