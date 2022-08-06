@@ -15,5 +15,13 @@ use Inertia\Inertia;
 */
 
 Route::get('/home', function () {
-    return Inertia::render('Index');
+    return Inertia::render('Index',[
+        "load" => fn () => []
+    ]);
+});
+
+Route::get('/users', function () {
+    return Inertia::render('Users',[
+        "load" => fn () => []
+    ]);
 });

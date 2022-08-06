@@ -1,11 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface MenuManagerType {
-  itemActive: string,
+  item: {
+    name:string,
+    active: boolean
+  },
   menuContracted: boolean
 }
 const initialstate: MenuManagerType = {
-  itemActive: '',
+  item: {
+    name: '',
+    active: false
+  },
   menuContracted: true
 };
 
@@ -16,8 +22,9 @@ export const counterSlice = createSlice({
     menuExpandTogle: (state: MenuManagerType) => {
       state.menuContracted = !state.menuContracted
     },
-    setActiveItem: (state:MenuManagerType,{type,payload}:{type:string,payload:string})=> {
-      state.itemActive = payload
+    setActiveItem: (state:MenuManagerType,{type,payload}:{type:string,payload:{itemName:string,active:boolean}})=> {
+      state.item.name = payload.itemName;
+      state.item.active = payload.active;
     }
    
   },

@@ -18,7 +18,7 @@ const AppRender = (App,props)=>{
         </Provider>
     )
 }
-
+console.log('init app');
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.jsx`, import.meta.glob('./Pages/**/*.jsx')),

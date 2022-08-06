@@ -4,7 +4,7 @@ import LayoutDashboard from '../Layout/LayoutDashboard';
 const  Index = ()=>{
   return (
     <div>
-      content dash
+      INDEX CONTENT
     </div>
   )
 }
