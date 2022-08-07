@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC,ReactNode} from 'react';
 
-const Preloader = ()=>{
+const Preloader: FC<any> = ()=>{
   return(
     <div  style={{width:'100%',height:'100%',position:'relative'}}>
       <div style={{position: 'absolute',top: 0, bottom: 0,left:0,right:0}}>

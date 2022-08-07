@@ -4,7 +4,7 @@ import {useDispatch,useSelector} from 'react-redux';
 import { actions as menumanagerAction, MenuManagerType } from '../../stores/MenuManagerStore';
 import { Link, usePage } from '@inertiajs/inertia-react';
 
-const ItemMenu = ({item}:{item:MenuType,patner:string}) => {
+const ItemMenu = ({item}:{item:MenuType}) => {
   const menuManager = useSelector( (state:{menuManager:MenuManagerType}) => state.menuManager )
   const dispatch = useDispatch()
   const currentUrl = usePage().url;

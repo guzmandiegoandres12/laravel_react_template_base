@@ -6,12 +6,18 @@ use App\Actions\Fortify\CreateNewUser;
 use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
+use App\Models\User;
+use Error;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
+use Laravel\Fortify\Contracts\LoginResponse;
+use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Fortify;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -23,7 +29,18 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
+            public function toResponse($request)
+            {
+                return Redirect::route('login');
+            }
+        }); 
+        $this->app->instance(LoginResponse::class, new class implements LoginResponse {
+            public function toResponse($request)
+            {
+                return Redirect::route('/home');
+            }
+        }); 
     }
 
     /**
@@ -33,6 +50,25 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        
+        Fortify::authenticateUsing(function (Request $request) {
+           
+            
+            
+            $user = User::where('email', $request->email)->first();
+             
+            if ($user &&
+                Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+            
+            
+            redirect()->route('login')->with('status','fail')->with('message','Usuario o contaseña incorrectos');
+            
+            return false;
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -48,7 +84,9 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
-        Fortify::loginView(function () {
+        Fortify::loginView(function ($d) {
+        
+
             return Inertia::render('auth/Login', [
                 'canResetPassword' => Route::has('password.request'),
                 'status' => session('status'),
@@ -59,5 +97,8 @@ class FortifyServiceProvider extends ServiceProvider
             return Inertia::render('auth/Register', [
             ]);
         });
+
+
     }
 }
+

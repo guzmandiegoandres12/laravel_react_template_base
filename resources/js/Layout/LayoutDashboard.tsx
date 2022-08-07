@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {useSelector} from 'react-redux'; 
 
 import Header from '../Componets/LayoutsComponets/Header';
@@ -12,7 +12,7 @@ import {dataMenu} from '../dataMocks/DataMenu';
 
 /**menu-toggle */
 
-const LayoutDashboard = ({children}) =>{
+const LayoutDashboard: FC<any> = ({children}) =>{
   const menuManager = useSelector( (state:{menuManager:MenuManagerType}) => state.menuManager )
   return (
     

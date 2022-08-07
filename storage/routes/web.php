@@ -18,7 +18,7 @@ Route::get('/home', function () {
     return Inertia::render('Index',[
         "load" => fn () => []
     ]);
-})->middleware('auth');
+})->middleware('auth')->name('/home');
 
 Route::get('/users', function () {
     return Inertia::render('Users',[
